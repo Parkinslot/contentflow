@@ -46,20 +46,13 @@ if st.button("🚀 Generar posts", use_container_width=True, type="primary"):
         st.success("¡Posts generados!")
         st.divider()
 
-        # Separar y mostrar cada post
         posts = resultado.split("---")
 
-for i, post in enumerate(posts):
-    post = post.strip()
-    # Elimina el "POST 1:", "POST 2:", etc. del inicio
-    if post.upper().startswith(f"POST {i+1}:"):
-        post = post[len(f"POST {i+1}:"):].strip()
-    if post:
-        st.markdown(f"#### Post {i+1}")
-        st.text_area(
-            label="",
-            value=post,
-            height=150,
-            key=f"post_{i}"
-        )
-        st.divider()
+        for i, post in enumerate(posts):
+            post = post.strip()
+            if post.upper().startswith(f"POST {i+1}:"):
+                post = post[len(f"POST {i+1}:"):].strip()
+            if post:
+                st.markdown(f"#### Post {i+1}")
+                st.text_area(
+                    label=""
